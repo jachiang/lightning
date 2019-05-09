@@ -53,8 +53,14 @@ class Millisatoshi:
         """
         Appends the 'msat' as expected for this type.
         """
-        return str(self.millisatoshis) + "msat"
+        return "\'" + self.__str__() + "\'"
 
+    def __str__(self):
+        """
+        Appends the 'msat' as expected for this type.
+        """
+        return str(self.millisatoshis) + "msat"
+    
     def to_satoshi(self):
         """
         Return a Decimal representing the number of satoshis
@@ -86,7 +92,7 @@ class Millisatoshi:
             return '{:.8f}btc'.format(self.to_btc())
 
     def to_json(self):
-        return self.__repr__()
+        return self.__str__()
 
     def __int__(self):
         return self.millisatoshis
